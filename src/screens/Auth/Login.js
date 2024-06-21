@@ -2,6 +2,7 @@ import React from 'react';
 import {View, Text, Button} from 'react-native';
 import {useDispatch} from 'react-redux';
 import {login} from './../../services/reducers/authReducer';
+import InputBox from '../../components/common/customInputTextField';
 
 const Login = ({navigation}) => {
   const dispatch = useDispatch();
@@ -16,6 +17,7 @@ const Login = ({navigation}) => {
         title="Register now"
         onPress={() => navigation.navigate('Register')}
       />
+      {/* <InputBox/> */}
     </View>
   );
 };
