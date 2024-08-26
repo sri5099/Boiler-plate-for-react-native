@@ -1,6 +1,6 @@
 import React from 'react';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
-import {Screen2} from './../screens';
+import {Screen6} from './../screens';
 import Tabs from './Tabs';
 
 const HomeStack = createNativeStackNavigator();
@@ -17,7 +17,7 @@ export default function CommonStack({route, navigation}) {
       />
       <HomeStack.Screen
         name="Screen6"
-        component={Screen2}
+        component={Screen6}
         options={{
           headerShown: false,
         }}
