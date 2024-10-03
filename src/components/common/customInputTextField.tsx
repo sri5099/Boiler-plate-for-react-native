@@ -1,42 +1,70 @@
-import React, { useState } from 'react';
-import { View, Input } from 'native-base';
-import { StyleSheet } from 'react-native';
+import { IconButton } from 'native-base';
+import React, { useCallback, useEffect, useState } from 'react';
+import { View, Text, TextInput, StyleSheet, TouchableOpacity } from 'react-native';
+import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 
 interface Props {
-  // Add props if needed
+  label: string;
+  value: string;
+  onChangeText: (text: string) => void;
+  placeholder: string;
+  secureTextEntry?: boolean;
+  [key: string]: any;
+  icon?: JSX.Element;
 }
 
-const InputBox: React.FC<Props> = () => {
-  const [inputValue, setInputValue] = useState('');
+const CustomInputBox: React.FC<Props> = ({ label, value, onChangeText, placeholder, secureTextEntry,  icon ,...props }) => {
+  const [isSecure, setIsSecure] = useState(secureTextEntry);
 
-  const handleInputChange = (text: string) => {
-    setInputValue(text);
-  };
+  useEffect(() => {
+    setIsSecure(secureTextEntry);
+  }, [secureTextEntry]);
 
+  const onPresseye = useCallback(() => {
+    setIsSecure(!isSecure);
+  }, [isSecure]);
+
+ 
   return (
     <View style={styles.container}>
-      <Input
-        style={styles.input}
-        placeholder="Enter a value"
-        value={inputValue}
-        onChangeText={handleInputChange}
-      />
+      <Text style={styles.label}>{label}</Text>
+      <View style={styles.inputContainer}>
+        <TextInput
+          style={styles.input}
+          value={value}
+          onChangeText={onChangeText}
+          placeholder={placeholder}
+          secureTextEntry={isSecure}
+          {...props}
+        />
+        {secureTextEntry && icon
+        }
+      </View>
     </View>
   );
 };
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
-    justifyContent: 'center',
+    marginBottom: 20,
+  },
+  label: {
+    fontSize: 16,
+    marginBottom: 5,
+  },
+  inputContainer: {
+    flexDirection: 'row',
     alignItems: 'center',
+    borderBottomWidth: 1,
+    borderBottomColor: '#ccc',
+   width: '80%'
   },
   input: {
+    flex: 1,
     height: 40,
-    borderColor: 'gray',
-    borderWidth: 1,
-    paddingHorizontal: 10,
+    fontSize: 16,
+    padding: 10,
   },
 });
 
-export default InputBox;
+export default CustomInputBox;

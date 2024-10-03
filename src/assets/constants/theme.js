@@ -1,7 +1,7 @@
-import {DefaultTheme} from '@react-navigation/native';
-import {extendTheme} from 'native-base';
+import {DefaultTheme } from '@react-navigation/native';
 import {Dimensions} from 'react-native';
 const {width, height} = Dimensions.get('window');
+import { extendTheme } from 'native-base';
 import {
     widthPercentageToDP as WP,
     heightPercentageToDP as HP,
@@ -21,6 +21,7 @@ import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import SimpleLineIcons from 'react-native-vector-icons/SimpleLineIcons';
 import Octicons from 'react-native-vector-icons/Octicons';
 import Foundation from 'react-native-vector-icons/Foundation';
+import { theme } from 'native-base';
 
 export const ICONTYPE = {
   MaterialCommunityIcons,
