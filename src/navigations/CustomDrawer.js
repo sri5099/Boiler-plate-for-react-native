@@ -3,7 +3,7 @@ import {View, StyleSheet, TouchableOpacity, Text} from 'react-native';
 import {DrawerContentScrollView, DrawerItem} from '@react-navigation/drawer';
 import {FONTS} from '../assets/constants/theme';
 
-export function CustomDrawer(props, {navigation}) {
+export function CustomDrawer(props) {
   return (
     <View style={{flex: 1}}>
       <DrawerContentScrollView {...props}>

@@ -4,6 +4,7 @@ import { useDispatch } from 'react-redux';
 import { login } from './../../services/reducers/authReducer';
 import {InputBox , CustomButton} from '../../components/common';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
+
 const Login = ({ navigation }) => {
   const dispatch = useDispatch();
   const [username, setUsername] = useState('');
@@ -13,20 +14,21 @@ const Login = ({ navigation }) => {
 
   const handleLogin = () => {
     if (!username || !password) {
-      setError('Please enter both username and password');
+    alert('Please enter both username and password');
       return;
     }
-    dispatch(login({ username, password }))
-    .then((response) => {
-      if (response.error) {
-        setError(response.error.message);
-      } else {
-        navigation.navigate('Home');
-      }
-    })
-    .catch((error) => {
-      setError('An error occurred while logging in');
-    });
+    dispatch(login({accessToken: 'ss'}))
+    // dispatch(login({ username: 'John', password: 'Password123' }))
+    // .then((response) => {
+    //   if (response.error) {
+    //     setError(response.error.message);
+    //   } else {
+    //     navigation.navigate('Common', { screen: 'Home', params: { userId: 1, userName: username } });
+    //   }
+    // })
+    // .catch((error) => {
+    //   setError('An error occurred while logging in');
+    // });
 };
 
 const onPresseye = useCallback(() => {
@@ -48,7 +50,7 @@ const onPresseye = useCallback(() => {
           value={password}
           onChangeText={(text) => setPassword(text)}
           placeholder="Enter your password"
-          secureTextEntry={true}
+          secureTextEntry={isSecure}
           icon={
             <TouchableOpacity onPress={onPresseye}>
               <MaterialIcons name={isSecure ? 'visibility-off' : 'visibility'} size={20} />

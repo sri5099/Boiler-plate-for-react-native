@@ -20,9 +20,6 @@ const CustomInputBox: React.FC<Props> = ({ label, value, onChangeText, placehold
     setIsSecure(secureTextEntry);
   }, [secureTextEntry]);
 
-  const onPresseye = useCallback(() => {
-    setIsSecure(!isSecure);
-  }, [isSecure]);
 
  
   return (
