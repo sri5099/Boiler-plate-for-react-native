@@ -16,7 +16,7 @@ import React, {
 import {useDispatch} from 'react-redux';
 import {TouchableOpacity} from 'react-native-gesture-handler';
 import {FONTS, WP} from '../../assets/constants/theme';
-import {logout} from './../../services/reducers/authReducer';
+import {logout} from '../../services/reducers/authReducer';
 
 const Screen2 = ({navigation}) => {
   const [count, setCount] = useState(0);
