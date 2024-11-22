@@ -1,0 +1,2 @@
+- name: AppCenter CodePush iOS/Android for React Native
+  uses: mrikirill/RN-AppCenter-CodePush@v1.0.0

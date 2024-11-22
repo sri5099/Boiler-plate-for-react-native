@@ -1,0 +1,29 @@
+
+---------- IOS BUILD TYPES (COMMANDS)  ----------
+
+DEFAULT CMD : npm run ios (RUN WITH DEVELOPMENT ENV)
+
+REFFER : package.json for build schemas of IOS
+
+----------------------------------------------------------------------------------------------------
+(LOCAL ENV) - .env 
+----------------------------------------------------------------------------------------------------
+- Run with Local env variables
+    - ENV File Name = .env.local 
+=====> CMD = react-native run-ios --scheme 'local'
+
+
+----------------------------------------------------------------------------------------------------
+(UAT/DEV/TESTING/QA ENV) - .env.development || DEFAULT
+----------------------------------------------------------------------------------------------------
+- Run with Development env variables
+    - ENV File Name = .env.development 
+=====> CMD = react-native run-ios --scheme 'development'
+
+
+----------------------------------------------------------------------------------------------------
+(PROD/LIVE ENV) - .env.production
+----------------------------------------------------------------------------------------------------
+- Run with Production env variables
+    - ENV File Name = .env.production 
+=====> CMD = react-native run-ios --scheme 'production'

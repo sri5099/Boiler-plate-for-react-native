@@ -2,59 +2,6 @@ import {DefaultTheme} from '@react-navigation/native';
 import {extendTheme} from 'native-base';
 import {Dimensions} from 'react-native';
 const {width, height} = Dimensions.get('window');
-import {
-    widthPercentageToDP as WP,
-    heightPercentageToDP as HP,
-  } from 'react-native-responsive-screen';
-  
-  export {WP, HP};
-
-  import React from 'react';
-import AntDesign from 'react-native-vector-icons/AntDesign';
-import FontAwesome from 'react-native-vector-icons/FontAwesome';
-import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
-import Ionicons from 'react-native-vector-icons/Ionicons';
-import Feather from 'react-native-vector-icons/Feather';
-import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
-import Entypo from 'react-native-vector-icons/Entypo';
-import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
-import SimpleLineIcons from 'react-native-vector-icons/SimpleLineIcons';
-import Octicons from 'react-native-vector-icons/Octicons';
-import Foundation from 'react-native-vector-icons/Foundation';
-
-export const ICONTYPE = {
-  MaterialCommunityIcons,
-  MaterialIcons,
-  Ionicons,
-  Feather,
-  FontAwesome,
-  FontAwesome5,
-  AntDesign,
-  Entypo,
-  SimpleLineIcons,
-  Octicons,
-  Foundation,
-};
-
-export const ICON = ({type, name, color, size = 24, style}) => {
-  const fontSize = 24;
-  const Tag = type;
-  return (
-    <>
-      {type && name && (
-        <Tag name={name} size={size || fontSize} color={color} style={style} />
-      )}
-    </>
-  );
-};
-
-export const ICONS = {
-  test: 'isv',
-  testType: ICONTYPE.AntDesign,
-};
-
-
-
 
 //FONT COLLECTIONS
 const FONTBLACK = 'SourceSansPro-Black';
@@ -111,13 +58,13 @@ export const COLORS = {
 
 //SIZES COLLECTIONS
 export const SIZES = {
-  // global sizes
+  // GLOBAL SIZES
   base: 8,
   font: 14,
   radius: 12,
   padding: '5%',
 
-  // font sizes
+  // FONT SIZES
   largeTitle: 40,
   h1: 30,
   h2: 22,
@@ -130,7 +77,7 @@ export const SIZES = {
   body4: 16,
   body5: 12,
 
-  // app dimensions
+  //APP DIMENSIONS
   width,
   height,
 };
@@ -192,6 +139,7 @@ export const NBTheme = extendTheme({
     initialColorMode: 'light',
   },
 });
+
 //REACT NAVIGATION
 export const RNTheme = {
   ...DefaultTheme,

@@ -1,0 +1,55 @@
+
+---------- ANDROID BUILD TYPES (COMMANDS) APK Only  ----------
+
+NOTE : Builds will generate in $PROJECT_ROOT/android/app/build/output/apk/
+
+DEFAULT CMD : npm run android (RUN WITH DEVELOPMENT ENV)
+
+REFFER : package.json for build types of android
+
+----------------------------------------------------------------------------------------------------
+(LOCAL ENV) - .env 
+----------------------------------------------------------------------------------------------------
+- Build Debug APP with Local env variables 
+    - Debugable = true 
+    - Compressed APK = false
+    - ENV File Name = .env 
+        =====> CMD = npm run android-local || react-native run-android --variant=localdebug
+- Build Release APP with Local env variables 
+    - Debugable = false 
+    - Compressed APK = true
+    - ENV File Name = .env 
+        =====> CMD = npm run android-local-release || react-native run-android --variant=localrelease
+
+
+----------------------------------------------------------------------------------------------------
+(UAT/DEV/TESTING/QA ENV) - .env.development  || DEFAULT
+----------------------------------------------------------------------------------------------------
+- Build Debug APP with UAT env variables 
+    - Debugable = true 
+    - Compressed APK = false
+    - ENV File Name = .env.development 
+        =====> CMD = npm run android-dev || react-native run-android --variant=developmentdebug
+- Build Release APP with UAT env variables 
+    - Debugable = false 
+    - Compressed APK = true
+    - ENV File Name = .env.development 
+        =====> CMD = npm run android-dev-release || react-native run-android --variant=developmentrelease
+
+
+----------------------------------------------------------------------------------------------------
+(PROD/LIVE ENV) - .env.production
+----------------------------------------------------------------------------------------------------
+- Build Debug APP with PRODUCTION env variables 
+    - Debugable = true 
+    - Compressed APK = false
+    - ENV File Name = .env.production
+        =====> CMD = npm run android-prod || react-native run-android --variant=productiondebug
+- Build Release APP with PRODUCTION env variables 
+    - Debugable = false 
+    - Compressed APK = true
+    - ENV File Name = .env.production
+        =====> CMD = npm run android-prod-release || react-native run-android --variant=productionrelease
+
+
+

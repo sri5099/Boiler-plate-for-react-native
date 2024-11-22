@@ -1,0 +1,23 @@
+//CREATING NEW API SERVICE - MODULE || PROCESS
+// -> Create a API service file in reduc/services folder - EX: users || users related endpoints will written here
+// -> import and export in index.js main file
+// -> import this service in store.js
+// -> configure with reducer and middleware
+
+//CREATING END POINT CODE
+
+  endpoints: builder => ({
+    signIn: builder.mutation({
+      query: body => {
+        return {
+          url: `/authaccount/login`,
+          method: 'POST',
+          body,
+          responseHandler: async response => {
+            const data = await response.json();
+            const headers = response.headers;
+            return {data, headers};
+          },
+        };
+      },
+    }),

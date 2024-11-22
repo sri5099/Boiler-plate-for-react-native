@@ -2,7 +2,7 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const ACCESS_TOKEN = 'user';
 
-export const setAccessToken = async function (value: any) {
+export const setAccessToken = async function (value) {
   AsyncStorage.setItem(ACCESS_TOKEN, value);
 };
 

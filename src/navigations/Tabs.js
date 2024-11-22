@@ -1,8 +1,8 @@
 import React from 'react';
 import {View, Text, StyleSheet, Image, TouchableOpacity} from 'react-native';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
-import {Screen2, Screen3, Screen4, Screen5} from './../screens';
-import {COLORS, ICON, ICONS, FONTS} from '../assets/constants/theme';
+import {Screen2, Screen3, Screen4, Screen5} from '@/screens';
+import {COLORS, ICON, ICONS, FONTS} from '@/constants';
 
 const Tab = createBottomTabNavigator();
 
@@ -82,25 +82,7 @@ export default function Tabs() {
       screenOptions={{
         headerShown: false,
         tabBarShowLabel: false,
-        tabBarStyle: {
-          position: 'absolute',
-          bottom: 0,
-          left: 0,
-          right: 0,
-          backgroundColor: '#ffffffff',
-          borderTopEndRadius: 15,
-          borderTopStartRadius: 15,
-          height: '9%',
-
-          elevation: 24,
-          shadowColor: '#000000',
-          shadowOffset: {
-            width: 0,
-            height: 5,
-          },
-          shadowOpacity: 0.18,
-          shadowRadius: 15,
-        },
+        tabBarStyle: styles.tabNav,
       }}>
       {customTabs.map((item, index) => {
         {
@@ -131,12 +113,7 @@ export default function Tabs() {
                 component={item.component}
                 options={{
                   tabBarIcon: ({focused}) => (
-                    <View
-                      style={{
-                        alignItems: 'center',
-                        justifyContent: 'center',
-                        marginTop: 12,
-                      }}>
+                    <View style={styles.tabScreen}>
                       <ICON
                         type={item.type}
                         name={focused ? item.activeIcon : item.inActiveIcon}
@@ -172,5 +149,29 @@ const styles = StyleSheet.create({
       height: 2,
       width: 1,
     },
+  },
+  tabNav: {
+    position: 'absolute',
+    bottom: 0,
+    left: 0,
+    right: 0,
+    backgroundColor: '#ffffffff',
+    borderTopEndRadius: 15,
+    borderTopStartRadius: 15,
+    height: '9%',
+
+    elevation: 24,
+    shadowColor: '#000000',
+    shadowOffset: {
+      width: 0,
+      height: 5,
+    },
+    shadowOpacity: 0.18,
+    shadowRadius: 15,
+  },
+  tabScreen: {
+    alignItems: 'center',
+    justifyContent: 'center',
+    marginTop: 12,
   },
 });

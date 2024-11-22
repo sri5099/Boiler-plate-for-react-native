@@ -1,11 +1,12 @@
 import React, {useEffect} from 'react';
 import {View, Text, Button} from 'react-native';
 import {useSelector, useDispatch} from 'react-redux';
-import {Loader} from '../components/special/index';
-import {authIsLogedIn} from './../services/reducers/authReducer';
+import {Loader} from '@/components';
+import {authIsLogedIn} from '@/redux/reducers/authReducer';
 
-import AuthStack from './AuthStack';
-import HomeStack from './HomeStack';
+//STACKS
+import AuthStack from '@/navigations/AuthStack';
+import HomeStack from '@/navigations/HomeStack';
 
 export default function Navigations() {
   const accessToken = useSelector(state => state.auth.accessToken);
