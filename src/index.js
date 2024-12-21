@@ -15,12 +15,12 @@ const Main = () => {
   // }, []);
 
   return (
-    <Provider S={store}>
+    <Provider store={store}>
       <NativeBaseProvider theme={NBTheme}>
         <NavigationContainer theme={RNTheme}>
           <Navigations />
         </NavigationContainer>
-      </NativeBaseProvider>x
+      </NativeBaseProvider>
     </Provider>
   );
 };

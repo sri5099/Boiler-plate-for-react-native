@@ -2,7 +2,7 @@ import React, {useEffect} from 'react';
 import {View, Text, Button} from 'react-native';
 import {useSelector, useDispatch} from 'react-redux';
 import {Loader} from '@/components';
-import {authIsLogedIn} from '@/redux/reducers/authReducer';
+import { authIsLoggedIn } from '@/redux/reducers/authReducer';
 
 //STACKS
 import AuthStack from '@/navigations/AuthStack';
@@ -14,7 +14,7 @@ export default function Navigations() {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(authIsLogedIn());
+    dispatch(authIsLoggedIn());
   }, []);
 
   return (
