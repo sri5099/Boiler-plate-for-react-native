@@ -12,9 +12,9 @@ export default function Navigations() {
   const isLoading = useSelector(state => state.auth.isLoading);
   const dispatch = useDispatch();
 
-  useEffect(() => {
-    dispatch(authIsLogedIn());
-  }, []);
+  // useEffect(() => {
+  //   dispatch(authIsLogedIn());
+  // }, []);
 
   return (
     <>

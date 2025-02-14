@@ -1,52 +1,88 @@
-import {createSlice, createAsyncThunk} from '@reduxjs/toolkit';
-import {setAccessToken, clearAccessToken, getAccessToken} from '../../utils'
+import { createSlice } from '@reduxjs/toolkit';
+import AsyncStorage from '@react-native-async-storage/async-storage';
+
 const initialState = {
+  user: null,
   accessToken: null,
-  isLoading: true,
+  isAuthenticated: false,
+  isLoading: false,
+  error: null,
 };
 
-export const authIsLogedIn = createAsyncThunk('authIsLogedIn', async () => {
-  const accessToken = await getAccessToken();
-  const tokens = {accessToken};
-  return tokens;
-});
+// Function to check if user is logged in
+export const authIsLoggedIn = async () => {
+  const token = await AsyncStorage.getItem('accessToken');
+  return token !== null;
+};
 
-export const login = createAsyncThunk('login', async tokens => {
-  return tokens;
-});
-
-export const authSlice = createSlice({
+const authSlice = createSlice({
   name: 'auth',
   initialState,
   reducers: {
-    logout: (state, action) => {
+    loginStart(state) {
+      state.isLoading = true;
+      state.error = null;
+    },
+    loginSuccess(state, action) {
+      state.accessToken = action.payload.accessToken;
+      state.user = action.payload.user;
+      state.isAuthenticated = true;
+      state.isLoading = false;
+      state.error = null;
+
+      // Store token in AsyncStorage
+      AsyncStorage.setItem('accessToken', action.payload.accessToken);
+    },
+    loginFailure(state, action) {
+      state.isLoading = false;
+      state.error = action.payload;
+    },
+    registerStart(state) {
+      state.isLoading = true;
+      state.error = null;
+    },
+    registerSuccess(state, action) {
+      state.accessToken = action.payload.accessToken;
+      state.user = action.payload.user;
+      state.isAuthenticated = true;
+      state.isLoading = false;
+      state.error = null;
+
+      // Store token in AsyncStorage
+      AsyncStorage.setItem('accessToken', action.payload.accessToken);
+    },
+    registerFailure(state, action) {
+      state.isLoading = false;
+      state.error = action.payload;
+    },
+    logout(state) {
+      state.user = null;
       state.accessToken = null;
-      clearAccessToken();
+      state.isAuthenticated = false;
+      state.isLoading = false;
+      state.error = null;
+
+      // Remove token from AsyncStorage
+      AsyncStorage.removeItem('accessToken');
+    },
+    setAuthFromStorage(state, action) {
+      state.accessToken = action.payload.accessToken;
+      state.user = action.payload.user;
+      state.isAuthenticated = true;
     },
   },
-
- extraReducers: (builder) => {
-   builder
-     .addCase(authIsLogedIn.pending, (state) => {
-       state.isLoading = true;
-     })
-     .addCase(authIsLogedIn.fulfilled, (state, action) => {
-       state.accessToken = action.payload.accessToken;
-       state.isLoading = false;
-     })
-     .addCase(login.pending, (state) => {
-       state.isLoading = true;
-     })
-     .addCase(login.fulfilled, (state, action) => {
-       setAccessToken(action.payload.accessToken);
-       state.accessToken = action.payload.accessToken;
-       state.isLoading = false;
-     });
-
-}
-
 });
 
-export const {logout} = authSlice.actions;
+// Action creators
+export const {
+  loginStart,
+  loginSuccess,
+  loginFailure,
+  registerStart,
+  registerSuccess,
+  registerFailure,
+  logout,
+  setAuthFromStorage,
+} = authSlice.actions;
 
 export default authSlice.reducer;
